@@ -74,7 +74,7 @@ M.open = function()
 
   vim.api.nvim_open_win(bufnr, true, window_options)
 
-  vim.fn.termopen(table.concat(vim.tbl_flatten({ M.config.binary, M.config.args }), " "), {
+  vim.fn.termopen(table.concat(vim.iter({ M.config.binary, M.config.args }):flatten():totable(), " "), {
     on_exit = function()
       -- vim.api.nvim_win_close(winr, true)
       -- vim.cmd([[silent! :q]])
